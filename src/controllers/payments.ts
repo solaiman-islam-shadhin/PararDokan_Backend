@@ -7,6 +7,9 @@ import { getEffectiveSubscription } from "../utils/subscription";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
+  httpClient: Stripe.createFetchHttpClient(),
+  timeout: 20000,
+  maxNetworkRetries: 2,
 });
 const MIN_STRIPE_BDT = 100;
 
